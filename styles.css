@@ -1,0 +1,480 @@
+/* WaitWiki Styles - 知涟 WaitWiki */
+
+/* 知识卡片容器 - 根据大小设置调整尺寸 */
+#waitwiki-card-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  min-width: 200px;
+  min-height: 120px;
+}
+
+/* 卡片大小变体 */
+#waitwiki-card-container.waitwiki-small {
+  max-width: 280px;
+  padding: 12px;
+}
+
+#waitwiki-card-container.waitwiki-medium {
+  max-width: 320px;
+  padding: 16px;
+}
+
+#waitwiki-card-container.waitwiki-large {
+  max-width: 400px;
+  padding: 20px;
+}
+
+#waitwiki-card-container.waitwiki-show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#waitwiki-card-container.waitwiki-hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 知识卡片框架 */
+.waitwiki-card-frame {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 知识卡片内容容器 */
+.waitwiki-card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 加载器 */
+.waitwiki-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #4a3728;
+  border-radius: 50%;
+  animation: waitwiki-spin 1s linear infinite;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes waitwiki-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* 知识卡片标题 */
+.waitwiki-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #2c1810;
+  line-height: 1.4;
+  text-align: left;
+  width: 100%;
+}
+
+/* 知识卡片内容 */
+.waitwiki-card-content .waitwiki-card-content {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 8px 0;
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* 知识卡片来源 */
+.waitwiki-card-source {
+  font-size: 12px;
+  color: #666;
+  margin: 8px 0 0 0;
+  text-align: right;
+  width: 100%;
+  font-style: italic;
+}
+
+.waitwiki-card-source a {
+  color: #4a3728;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.waitwiki-card-source a:hover {
+  color: #2c1810;
+  text-decoration: underline;
+}
+
+/* 圆形图标 - 沿用ArtBreeze的成熟设计 */
+#waitwiki-circular-icon {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff, #f5f5f5);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  z-index: 9998;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#waitwiki-circular-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 12px 25px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+#waitwiki-circular-icon:active {
+  transform: scale(0.95);
+}
+
+/* 图标内容 */
+.waitwiki-icon-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  user-select: none;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  #waitwiki-card-container {
+    max-width: 90vw;
+    max-height: 80vh;
+    padding: 15px;
+  }
+  
+  #waitwiki-card-container.waitwiki-small {
+    padding: 12px;
+  }
+  
+  #waitwiki-card-container.waitwiki-medium {
+    padding: 16px;
+  }
+  
+  #waitwiki-card-container.waitwiki-large {
+    padding: 20px;
+  }
+  
+  .waitwiki-card-title {
+    font-size: 15px;
+  }
+  
+  .waitwiki-card-content .waitwiki-card-content {
+    font-size: 13px;
+  }
+  
+  .waitwiki-card-source {
+    font-size: 11px;
+  }
+  
+  #waitwiki-circular-icon {
+    width: 45px;
+    height: 45px;
+    bottom: 70px;
+    right: 15px;
+  }
+  
+  .waitwiki-icon-image {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  #waitwiki-card-container {
+    padding: 12px;
+    right: 10px;
+    top: 10px;
+  }
+  
+  #waitwiki-card-container.waitwiki-small {
+    padding: 10px;
+  }
+  
+  #waitwiki-card-container.waitwiki-medium {
+    padding: 12px;
+  }
+  
+  #waitwiki-card-container.waitwiki-large {
+    padding: 16px;
+  }
+  
+  .waitwiki-card-title {
+    font-size: 14px;
+  }
+  
+  .waitwiki-card-content .waitwiki-card-content {
+    font-size: 12px;
+  }
+  
+  .waitwiki-card-source {
+    font-size: 10px;
+  }
+  
+  #waitwiki-circular-icon {
+    width: 40px;
+    height: 40px;
+    bottom: 60px;
+    right: 10px;
+  }
+  
+  .waitwiki-icon-image {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* 高分辨率屏幕优化 */
+@media (min-width: 1920px) {
+  #waitwiki-card-container {
+    max-width: 450px;
+  }
+  
+  #waitwiki-card-container.waitwiki-large {
+    max-width: 500px;
+    padding: 24px;
+  }
+  
+  .waitwiki-card-title {
+    font-size: 18px;
+  }
+  
+  .waitwiki-card-content .waitwiki-card-content {
+    font-size: 16px;
+  }
+  
+  .waitwiki-card-source {
+    font-size: 14px;
+  }
+  
+  #waitwiki-circular-icon {
+    width: 55px;
+    height: 55px;
+    bottom: 90px;
+    right: 25px;
+  }
+  
+  .waitwiki-icon-image {
+    width: 33px;
+    height: 33px;
+  }
+}
+
+/* 动画效果 */
+@keyframes waitwiki-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes waitwiki-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes waitwiki-icon-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* 加载动画 */
+.waitwiki-loading {
+  animation: waitwiki-icon-bounce 1s infinite;
+}
+
+/* 可访问性 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  #waitwiki-card-container {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .waitwiki-card-title {
+    color: #f0f0f0;
+  }
+  
+  .waitwiki-card-content .waitwiki-card-content {
+    color: #e0e0e0;
+  }
+  
+  .waitwiki-card-source {
+    color: #b0b0b0;
+  }
+  
+  .waitwiki-card-source a {
+    color: #d4a574;
+  }
+  
+  .waitwiki-card-source a:hover {
+    color: #e6b885;
+  }
+  
+  #waitwiki-circular-icon {
+    background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* 手动暗夜模式类支持 */
+.waitwiki-dark-mode #waitwiki-card-container,
+body.dark-theme #waitwiki-card-container {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.waitwiki-dark-mode .waitwiki-card-title,
+body.dark-theme .waitwiki-card-title {
+  color: #f0f0f0;
+}
+
+.waitwiki-dark-mode .waitwiki-card-content .waitwiki-card-content,
+body.dark-theme .waitwiki-card-content .waitwiki-card-content {
+  color: #e0e0e0;
+}
+
+.waitwiki-dark-mode .waitwiki-card-source,
+body.dark-theme .waitwiki-card-source {
+  color: #b0b0b0;
+}
+
+.waitwiki-dark-mode .waitwiki-card-source a,
+body.dark-theme .waitwiki-card-source a {
+  color: #d4a574;
+}
+
+.waitwiki-dark-mode .waitwiki-card-source a:hover,
+body.dark-theme .waitwiki-card-source a:hover {
+  color: #e6b885;
+}
+
+.waitwiki-dark-mode #waitwiki-circular-icon,
+body.dark-theme #waitwiki-circular-icon {
+  background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 知识卡片特定动画 */
+#waitwiki-card-container.waitwiki-show {
+  animation: waitwiki-fade-in 0.4s ease-out;
+}
+
+#waitwiki-card-container.waitwiki-hide {
+  animation: waitwiki-fade-out 0.4s ease-in;
+}
+
+/* 知识卡片类型特定样式 */
+.waitwiki-card-container[data-type="wikipedia"] .waitwiki-card-title {
+  color: #0066cc;
+}
+
+.waitwiki-card-container[data-type="quotes"] .waitwiki-card-title {
+  color: #8b4513;
+}
+
+.waitwiki-card-container[data-type="facts"] .waitwiki-card-title {
+  color: #2e8b57;
+}
+
+/* 深色模式下的类型颜色 */
+.waitwiki-dark-mode .waitwiki-card-container[data-type="wikipedia"] .waitwiki-card-title,
+body.dark-theme .waitwiki-card-container[data-type="wikipedia"] .waitwiki-card-title {
+  color: #4da6ff;
+}
+
+.waitwiki-dark-mode .waitwiki-card-container[data-type="quotes"] .waitwiki-card-title,
+body.dark-theme .waitwiki-card-container[data-type="quotes"] .waitwiki-card-title {
+  color: #cd853f;
+}
+
+.waitwiki-dark-mode .waitwiki-card-container[data-type="facts"] .waitwiki-card-title,
+body.dark-theme .waitwiki-card-container[data-type="facts"] .waitwiki-card-title {
+  color: #3cb371;
+}

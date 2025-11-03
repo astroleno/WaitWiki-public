@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>知涟 WaitWiki</title>
+  <style>body{width:280px;min-height:320px;margin:0;padding:0;font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','微软雅黑',Arial,sans-serif;background:linear-gradient(135deg,#ffffff,#f8f8f8);color:#2c1810;border:none;outline:none}.header{background:linear-gradient(135deg,#ffffff,#f5f5f5);color:#2c1810;padding:20px;text-align:center;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1)}.header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(44,24,16,0.03) 1px,transparent 1px);background-size:20px 20px;animation:float 20s infinite linear}@keyframes float{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.logo{font-size:20px;font-weight:700;margin-bottom:6px;position:relative;z-index:1;color:#2c1810}.subtitle{font-size:11px;opacity:0.7;position:relative;z-index:1;color:#4a3728}.content{padding:15px;background:#ffffff}.control-group{background:linear-gradient(135deg,#ffffff,#fafafa);border-radius:12px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.06);margin-bottom:10px;border:1px solid rgba(44,24,16,0.08)}.controls-row{display:flex;gap:20px;align-items:flex-start}.control-item{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}.control-label{font-size:12px;font-weight:500;margin-bottom:8px;color:#2c1810}.toggle-switch{position:relative;display:inline-block;width:48px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ddd;transition:.4s;border-radius:24px;box-shadow:inset 0 1px 3px rgba(0,0,0,0.2)}.slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.4s;border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,0.2)}input:checked+.slider{background-color:#4a3728}input:checked+.slider:before{transform:translateX(24px)}.control-item.full-width{flex:none;width:100%}.size-selector{display:flex;gap:8px;justify-content:center;margin-top:8px}.size-option{cursor:pointer;padding:6px 12px;border:2px solid #ddd;border-radius:16px;font-size:11px;font-weight:500;transition:all 0.3s ease;color:#666;display:flex;align-items:center;justify-content:center}.size-option input[type="radio"]{display:none}.size-option:has(input[type="radio"]:checked){background-color:#4a3728;color:white;border-color:#4a3728}.size-option:hover{border-color:#4a3728;color:#4a3728}.size-label{display:block;transition:all 0.3s ease}body.dark-mode{background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#e0e0e0}body.dark-mode .header{background:linear-gradient(135deg,#2a2a2a,#1a1a1a);color:#e0e0e0;box-shadow:0 2px 8px rgba(0,0,0,0.3)}body.dark-mode .logo{color:#e0e0e0}body.dark-mode .subtitle{color:#b0b0b0}body.dark-mode .content{background:#1a1a1a}body.dark-mode .control-group{background:linear-gradient(135deg,#2a2a2a,#1f1f1f);border:1px solid rgba(255,255,255,0.1);box-shadow:0 2px 8px rgba(0,0,0,0.3),0 1px 3px rgba(0,0,0,0.2)}body.dark-mode .control-label{color:#e0e0e0}body.dark-mode .slider{background-color:#444}body.dark-mode input:checked+.slider{background-color:#6a5548}body.dark-mode .size-option{border-color:#555;color:#b0b0b0}body.dark-mode .size-option:hover{border-color:#6a5548;color:#6a5548}body.dark-mode .size-option:has(input[type="radio"]:checked){background-color:#6a5548;color:white;border-color:#6a5548}body.dark-mode .footer{background:linear-gradient(135deg,#2a2a2a,#1f1f1f);border-top:1px solid rgba(255,255,255,0.1);color:#888}body.small{width:240px;min-height:180px}body.medium{width:280px;min-height:200px}body.large{width:320px;min-height:220px}.footer{text-align:center;padding:10px;font-size:11px;color:#888;border-top:1px solid rgba(44,24,16,0.1);background:linear-gradient(135deg,#fafafa,#f5f5f5)}.content-types{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.content-type-item{cursor:pointer;padding:6px 8px;border:1px solid #ddd;border-radius:8px;font-size:11px;font-weight:500;transition:all 0.3s ease;color:#666;display:flex;align-items:center;justify-content:center;text-align:center}.content-type-item input[type="checkbox"]{display:none}.content-type-item:has(input[type="checkbox"]:checked){background-color:#4a3728;color:white;border-color:#4a3728}.content-type-item:hover{border-color:#4a3728;color:#4a3728}.content-type-label{display:block;transition:all 0.3s ease}body.dark-mode .content-type-item{border-color:#555;color:#b0b0b0}body.dark-mode .content-type-item:hover{border-color:#6a5548;color:#6a5548}body.dark-mode .content-type-item:has(input[type="checkbox"]:checked){background-color:#6a5548;color:white;border-color:#6a5548}.rss-manager{margin-top:8px}.rss-input-group{display:flex;gap:6px;margin-bottom:8px}.rss-input{flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:8px;font-size:12px;outline:none;transition:border-color 0.3s}.rss-input:focus{border-color:#4a3728}.rss-add-btn{padding:8px 16px;background-color:#4a3728;color:white;border:none;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.3s;white-space:nowrap}.rss-add-btn:hover{background-color:#5a4738;transform:translateY(-1px)}.rss-add-btn:active{transform:translateY(0)}.rss-status{font-size:11px;margin-bottom:8px;padding:6px 12px;border-radius:6px;display:none}.rss-status.success{background-color:#e8f5e9;color:#2e7d32;display:block}.rss-status.error{background-color:#ffebee;color:#c62828;display:block}.rss-list{max-height:180px;overflow-y:auto;border:1px solid #e0e0e0;border-radius:8px;padding:8px}.rss-empty{text-align:center;color:#999;font-size:11px;padding:12px}.rss-item{display:flex;align-items:center;justify-content:space-between;padding:8px;border-radius:6px;margin-bottom:4px;background-color:#fafafa;transition:background-color 0.3s}.rss-item:hover{background-color:#f0f0f0}.rss-item-info{flex:1;min-width:0;max-width:calc(100%-60px);overflow:hidden}.rss-item-name{font-size:12px;font-weight:500;color:#2c1810;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}.rss-item-url{font-size:10px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:block}.rss-item-actions{display:flex;gap:4px;align-items:center;flex-shrink:0}.rss-toggle{position:relative;display:inline-block;width:36px;height:20px}.rss-toggle input{opacity:0;width:0;height:0}.rss-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ddd;transition:.3s;border-radius:20px}.rss-slider:before{position:absolute;content:"";height:14px;width:14px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked+.rss-slider{background-color:#4a3728}input:checked+.rss-slider:before{transform:translateX(16px)}.rss-delete-btn{background:none;border:none;color:#c62828;font-size:16px;cursor:pointer;padding:4px;line-height:1;transition:transform 0.2s}.rss-delete-btn:hover{transform:scale(1.2)}body.dark-mode .rss-input{background-color:#2a2a2a;border-color:#555;color:#e0e0e0}body.dark-mode .rss-input:focus{border-color:#6a5548}body.dark-mode .rss-add-btn{background-color:#6a5548}body.dark-mode .rss-add-btn:hover{background-color:#7a6558}body.dark-mode .rss-list{border-color:#555;background-color:#1a1a1a}body.dark-mode .rss-item{background-color:#2a2a2a}body.dark-mode .rss-item:hover{background-color:#333}body.dark-mode .rss-item-name{color:#e0e0e0}body.dark-mode .rss-item-url{color:#999}body.dark-mode .rss-slider{background-color:#555}body.dark-mode input:checked+.rss-slider{background-color:#6a5548}</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">知涟 WaitWiki</div>
+    <div class="subtitle">等待，不是浪费，而是遇见知识的涟漪</div>
+  </div>
+
+  <div class="content">
+    <div class="control-group">
+      <div class="controls-row">
+        <div class="control-item">
+          <div class="control-label">启用知涟</div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="enableToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-item">
+          <div class="control-label">显示来源信息</div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="showInfoToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls-row">
+        <div class="control-item">
+          <div class="control-label">显示圆形图标</div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="showIconToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-item">
+          <div class="control-label">暗夜模式</div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-item full-width">
+        <div class="control-label">展示时长</div>
+        <div class="size-selector">
+          <label class="size-option">
+            <input type="radio" name="displayDuration" value="10" checked>
+            <span class="size-label">10秒</span>
+          </label>
+          <label class="size-option">
+            <input type="radio" name="displayDuration" value="20">
+            <span class="size-label">20秒</span>
+          </label>
+          <label class="size-option">
+            <input type="radio" name="displayDuration" value="always">
+            <span class="size-label">常驻</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-item full-width">
+        <div class="control-label">卡片大小</div>
+        <div class="size-selector">
+          <label class="size-option">
+            <input type="radio" name="artworkSize" value="small">
+            <span class="size-label">小</span>
+          </label>
+          <label class="size-option">
+            <input type="radio" name="artworkSize" value="medium" checked>
+            <span class="size-label">中</span>
+          </label>
+          <label class="size-option">
+            <input type="radio" name="artworkSize" value="large">
+            <span class="size-label">大</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-item full-width">
+        <div class="control-label">内容类型</div>
+        <div class="content-types">
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-rss" checked>
+            <span class="content-type-label">RSS订阅</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-api">
+            <span class="content-type-label">自定义API</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-wikipedia">
+            <span class="content-type-label">维基百科</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-quotes">
+            <span class="content-type-label">名言</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-facts">
+            <span class="content-type-label">趣闻</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-advice">
+            <span class="content-type-label">建议</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-catfacts">
+            <span class="content-type-label">动物</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-trivia">
+            <span class="content-type-label">问答</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-cocktails">
+            <span class="content-type-label">调酒</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-datafacts">
+            <span class="content-type-label">数据真相</span>
+          </label>
+          <label class="content-type-item">
+            <input type="checkbox" id="contentType-gathas">
+            <span class="content-type-label">偈语</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-item full-width">
+        <div class="control-label">RSS订阅管理</div>
+        <div class="rss-manager">
+          <div class="rss-input-group">
+            <input type="text" id="rssUrlInput" placeholder="输入RSS地址 (支持RSS/Atom)" class="rss-input">
+            <button id="addRssBtn" class="rss-add-btn">➕ 添加</button>
+          </div>
+          <div class="rss-status" id="rssStatus"></div>
+          <div class="rss-list" id="rssList">
+            <div class="rss-empty">暂无订阅，请添加RSS源</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-item full-width">
+        <div class="control-label">自定义API管理</div>
+        <div class="rss-manager">
+          <div class="rss-input-group">
+            <input type="text" id="apiUrlInput" placeholder="输入API地址 (JSON格式)" class="rss-input">
+            <button id="addApiBtn" class="rss-add-btn">➕ 添加</button>
+          </div>
+          <div class="rss-status" id="apiStatus"></div>
+          <div class="rss-list" id="apiList">
+            <div class="rss-empty">暂无API，请添加API源</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>知涟 WaitWiki</div>
+    <div>版本 1.0.0</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

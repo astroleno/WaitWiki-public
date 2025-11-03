@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "知涟 WaitWiki",
+  "version": "1.0.0",
+  "description": "等待，不是浪费，而是遇见知识的涟漪。",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://*.wikipedia.org/*",
+    "https://api.wikimedia.org/*",
+    "https://zenquotes.io/*",
+    "https://api.quotable.io/*",
+    "https://api.api-ninjas.com/*",
+    "https://numbersapi.com/*",
+    "https://api.adviceslip.com/*",
+    "https://catfact.ninja/*",
+    "https://the-trivia-api.com/*",
+    "https://www.thecocktaildb.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*",
+    "https://bard.google.com/*",
+    "https://gemini.google.com/*",
+    "https://www.bing.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://chat.deepseek.com/*",
+    "https://grok.x.ai/*",
+    "https://x.ai/*",
+    "https://yuanbao.tencent.com/*",
+    "https://kimi.ai/*",
+    "https://kimi.moonshot.cn/*",
+    "https://doubao.com/*",
+    "https://volcengine.com/*",
+    "https://*/*",
+    "http://*/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["endpoints.js", "detectPlatform.js", "localContent.js", "csvLoader.js", "apiClients.js", "contentTypes.js", "rssClient.js", "apiClient.js", "content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["gathas.csv", "icons/*", "data/*", "datafacts.csv", "gathas.csv"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/logo16.png",
+    "32": "icons/logo32.png",
+    "48": "icons/logo48.png",
+    "128": "icons/logo128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/logo16.png",
+      "32": "icons/logo32.png",
+      "48": "icons/logo48.png",
+      "128": "icons/logo128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
